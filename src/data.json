@@ -1,0 +1,140 @@
+{
+  "navigation": [
+    { "name": "About", "href": "#about" },
+    { "name": "Contact", "href": "#contact" },
+    { "name": "Appointment Info", "href": "#appointments" },
+    { "name": "Services", "href": "#services" },
+    { "name": "Insurance", "href": "#insurance" },
+    { "name": "Client Portal", "href": "https://marilyn-baker7438.clientsecure.me/", "external": true },
+    { "name": "Connect with Counselor", "href": "mailto:marilyn@pnw-christiancounseling.com", "special": true }
+  ],
+  "logo": "/pnw-cc-logo.png",
+  "hero": {
+    "headline": "PNW Christian Counseling",
+    "subheaders": ["Clinically-based", "Gospel-informed", "Telehealth Counseling"],
+    "ctaPrimary": "Get Connected",
+    "ctaSecondary": "Our Services",
+    "backgroundImage": "/shore-pebbles.png"
+  },
+  "about": {
+    "badge": "Meet the Counselor",
+    "name": "Marilyn Baker",
+    "certifications": "MA, LMHC, NCC",
+    "bio": [
+      "I am currently taking new clients and have limited openings available Monday through Thursday.",
+      "Marilyn Baker is a Licensed Mental Health Counselor and Pacific Northwest local with experience in corporate and nonprofit sectors working with diverse populations and internationally. She has been involved in Christian ministry since 2016 and received her graduate degree from Western Seminary.",
+      "Marilyn focuses on providing direct counseling services to those in high-stress work environments and those struggling with chronic physical or emotional burdens.",
+      "She helps individual clients (adults and teens) overcome anxiety, depression, difficult life transitions, boundary issues, self-worth, and relational issues. She individualizes her approach for each client using a person-centered, Cognitive Behavioral Therapy (CBT) approach with strength-based, clinically focused methods. She loves to bring respect, warmth, and levity into the counseling room and looks forward to working with you."
+    ],
+    "additionalCredentials": [
+      "Licensed by State of Washington / LH61625549",
+      "Certificate from National Board for Certified Counselors, Inc. (NBCC)",
+      "Membership with The American Association of Christian Counselors (AACC)"
+    ],
+    "quote": "<Some inspirational quote here> Healing is a journey of faith and resilience.",
+    "stats": [
+      { "value": "<DO NOT DELETE>", "label": "Years Experience" },
+      { "value": "1000+", "label": "Sessions (wow so many)" }
+    ],
+    "image": "/marilyn-head-shot.png"
+  },
+  "services": {
+    "headline": "Our Services",
+    "subheadline": "We offer a variety of counseling services tailored to your unique needs and spiritual journey.",
+    "items": [
+      {
+        "title": "Individual Counseling",
+        "description": "Personalized support for anxiety, depression, and personal growth in a safe, spiritual environment.",
+        "icon": "Heart"
+      },
+      {
+        "title": "Couples Therapy",
+        "description": "Strengthening relationships through improved communication, conflict resolution, and shared faith.",
+        "icon": "Users"
+      },
+      {
+        "title": "Family Dynamics",
+        "description": "Navigating transitions and healing family relationships with compassion and biblical wisdom.",
+        "icon": "Sparkles"
+      },
+      {
+        "title": "Faith-Based Guidance",
+        "description": "Integrating your spiritual values into the therapeutic process for holistic healing.",
+        "icon": "BookOpen"
+      }
+    ],
+    "focus": {
+      "headline": "Areas of Focus",
+      "subheadline": "I specialize in Anxiety, Stress and Relationship Issues.",
+      "areas": [
+        "Affair Recovery", "Anxiety", "Boundaries", "Chronic Illness/Pain", "Codependency", "Coping Skills",
+        "Depression", "Domestic Abuse",  "Family Conflict", "Grief", "Guilt/Shame", "Life Changes", "PTSD", 
+        "Relationships", "Self-Esteem", "Spirituality", "Stress", "Teens", "Trauma", "Young Adults"
+      ]
+    }
+  },
+  "insurance": {
+    "headline": "Insurance",
+    "description": "For any insurance out-of-network, I can provide superbills that can be submitted to your insurance for reimbursement. Insurance generally covers about 80%, but in order to know your exact coverage, you will need to contact your insurance and ask them how much telehealth outpatient mental health therapy costs.\n\nA Good Faith Estimate is available upon request.",
+    "logos": [
+      { "src": "/insuranceLogos/premera.png", "width": 160 },
+      { "src": "/insuranceLogos/regence.png", "width": 100 },
+      { "src": "/insuranceLogos/first-choice-health.png", "width": 200 }
+    ],
+    "providers": [
+      "ACN Group", "Asuris Northwest Health", "BridgeSpan Health", "Global", 
+      "Healthcare Management Administrators", "Heritage", "Individual Signature", 
+      "Kaiser Foundation Health Plan of the Northwest", "Kaiser Foundation Health Plan of Washington Options", 
+      "Inc.", "LifeWise", "PacificSource Health Plans", "Regence BlueCross BlueShield", 
+      "Regence BlueShield", "Regence Group Administrators", "Wellfleet Insurance Company"
+    ]
+  },
+  "appointments": {
+    "headline": "Appointments",
+    "details": [
+      { "label": "Session Length", "value": "50-55 minutes" },
+      { "label": "Individual Counseling Session Cost", "value": "Please inquire for out-of-pocket (not using insurance) session cost." },
+      { "label": "Cancellations", "value": "A minimum of 24 hours’ notice is required for free cancellations. Late cancellations and missed appointments incur a $75 charge." }
+    ],
+    "officeHours": {
+      "headline": "Office Hours",
+      "schedule": [
+        { "day": "Monday", "time": "10 AM - 5 PM" },
+        { "day": "Tuesday", "time": "10 AM - 5 PM" },
+        { "day": "Wednesday", "time": "10 AM - 5 PM" },
+        { "day": "Thursday", "time": "10 AM - 1 PM" }
+      ]
+    }
+  },
+  "contact": {
+    "headline": "Let's Connect",
+    "description": "Ready to start your journey towards healing? Fill out the form, and we'll get back to you within 24-48 business hours.",
+    "image": "/shaw.jpg",
+    "form": {
+      "firstNameLabel": "First Name",
+      "firstNamePlaceholder": "Jane",
+      "lastNameLabel": "Last Name",
+      "lastNamePlaceholder": "Doe",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "jane@example.com",
+      "messageLabel": "Tell me a little bit about what brings you to counseling",
+      "messagePlaceholder": "Share your story here...",
+      "submitButton": "Request a Consultation",
+      "submittingText": "Sending...",
+      "successHeadline": "Message Received",
+      "successText": "Thank you for reaching out. We will get back to you shortly.",
+      "successCta": "Send another message"
+    }
+  },
+  "footer": {
+    "copyright": "PNW Christian Counseling PLLC",
+    "contact": {
+      "title": "Contact",
+      "email": "marilyn@pnw-christiancounseling.com",
+      "phone": "206.657.6053",
+      "address": "7633 S 126TH ST # 193",
+      "cityState": "Seattle, WA",
+      "psychologyTodayUrl": "https://www.psychologytoday.com/us/therapists/marilyn-baker-seattle-wa/1176853"
+    }
+  }
+}
