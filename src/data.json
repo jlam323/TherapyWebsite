@@ -4,6 +4,7 @@
     { "name": "Contact", "href": "#contact" },
     { "name": "Appointment Info", "href": "#appointments" },
     { "name": "Services", "href": "#services" },
+    { "name": "Endorsements", "href": "#endorsements" },
     { "name": "Insurance", "href": "#insurance" },
     { "name": "Client Portal", "href": "https://marilyn-baker7438.clientsecure.me/", "external": true },
     { "name": "Connect with Counselor", "href": "mailto:marilyn@pnw-christiancounseling.com", "special": true }
@@ -125,6 +126,52 @@
       "successText": "Thank you for reaching out. We will get back to you shortly.",
       "successCta": "Send another message"
     }
+  },
+  "endorsements": {
+    "headline": "Endorsements",
+    "subheadline": "Words from those who have journeyed with us.",
+    "list": [
+      {
+        "name": "Sarah J.",
+        "title": "Client",
+        "blurb": "Marilyn's approach to Christian counseling has been transformative for my anxiety. She provides a safe space where faith and clinical expertise meet in a way that feels incredibly grounding. Marilyn's approach to Christian counseling has been transformative for my anxiety. She provides a safe space where faith and clinical expertise meet in a way that feels incredibly grounding."
+      },
+      {
+        "name": "Dr. Thomas Miller",
+        "title": "Fellow Professional",
+        "blurb": "I have referred several clients to Marilyn over the years. Her professionalism, deep empathy, and specialized focus on high-stress environments make her an outstanding clinician."
+      },
+      {
+        "name": "David R.",
+        "title": "Client",
+        "blurb": "Navigating difficult life transitions was overwhelming until I started working with Marilyn. Her person-centered approach helped me find my footing and regain my confidence."
+      },
+      {
+        "name": "Emily P.",
+        "title": "Client",
+        "blurb": "Finding a counselor who truly understands the integration of biblical principles and modern therapy was a blessing. Marilyn's warmth and levity make even the hardest sessions feel hopeful."
+      },
+            {
+        "name": "John Smith",
+        "title": "Client",
+        "blurb": "Some text."
+      },
+      {
+        "name": "Dr. Smith John",
+        "title": "Fellow Professional",
+        "blurb": "I have referred several clients to Marilyn over the years. Her professionalism, deep empathy, and specialized focus on high-stress environments make her an outstanding clinician."
+      },
+      {
+        "name": "Obama",
+        "title": "Client",
+        "blurb": "Loved it, 10/10."
+      },
+      {
+        "name": "Michael Jackson",
+        "title": "Client",
+        "blurb": "Finding a counselor who truly understands the integration of biblical principles and modern therapy was a blessing. Marilyn's warmth and levity make even the hardest sessions feel hopeful."
+      }
+    ]
   },
   "footer": {
     "copyright": "PNW Christian Counseling PLLC",

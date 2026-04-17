@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import { MapPin, Clock, ShieldCheck, ChevronRight, Menu, Heart, Users, Sparkles, BookOpen, CheckCircle2, Award, Mail, Phone } from 'lucide-react';
+import React, { useState, useMemo, useRef, useLayoutEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { MapPin, Clock, ShieldCheck, ChevronRight, Menu, Heart, Users, Sparkles, BookOpen, CheckCircle2, Award, Mail, Phone, Quote, X } from 'lucide-react';
 import siteData from './data.json';
 
 const IconMap: Record<string, React.ReactNode> = {
@@ -16,6 +16,57 @@ const IconMap: Record<string, React.ReactNode> = {
   ShieldCheck: <ShieldCheck size={24} />,
   MapPin: <MapPin className="text-sage-light" size={20} />,
   Clock: <Clock className="text-sage-light" size={20} />,
+};
+
+const EndorsementCard = ({ endorsement, index, onSelect }: any) => {
+  const [isClamped, setIsClamped] = useState(false);
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  useLayoutEffect(() => {
+    const checkClamping = () => {
+      if (textRef.current) {
+        setIsClamped(textRef.current.scrollHeight > textRef.current.clientHeight);
+      }
+    };
+
+    checkClamping();
+    window.addEventListener('resize', checkClamping);
+    return () => window.removeEventListener('resize', checkClamping);
+  }, [endorsement.blurb]);
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="flex-shrink-0 w-[75vw] md:w-[350px] bg-cream/50 rounded-[32px] p-6 md:p-8 border border-sage-deep/10 snap-center hover:shadow-lg transition-shadow flex flex-col group/card"
+    >
+      <Quote className="text-sage-light/30 mb-4 flex-shrink-0" size={32} />
+      <div className="relative flex-grow">
+        <p 
+          ref={textRef}
+          className="text-base md:text-lg text-taupe leading-relaxed italic line-clamp-6"
+        >
+          "{endorsement.blurb}"
+        </p>
+        {isClamped && (
+          <button 
+            onClick={() => onSelect(endorsement)}
+            className="mt-2 text-sage-deep font-bold text-sm uppercase tracking-wider hover:text-sage-light transition-colors"
+          >
+            Read More
+          </button>
+        )}
+      </div>
+      <div className="mt-8 pt-6 border-t border-sage-deep/10">
+        <h4 className="font-serif text-lg md:text-xl text-sage-deep">{endorsement.name}</h4>
+        <p className="text-xs text-sage-light uppercase tracking-widest font-bold mt-1">
+          {endorsement.title}
+        </p>
+      </div>
+    </motion.div>
+  );
 };
 
 export default function App() {
@@ -29,6 +80,7 @@ export default function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedEndorsement, setSelectedEndorsement] = useState<typeof siteData.endorsements.list[0] | null>(null);
 
   React.useEffect(() => {
     const observerOptions = {
@@ -57,7 +109,7 @@ export default function App() {
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const sections = ['hero', 'about', 'contact', 'appointments', 'services', 'insurance'];
+    const sections = ['hero', 'about', 'contact', 'appointments', 'services', 'endorsements', 'insurance'];
     sections.forEach(id => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -513,9 +565,9 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15, duration: 1.0, ease: "easeOut" }}
-                className="p-8 rounded-3xl bg-white border border-sage-deep/5 hover:shadow-xl transition-all group"
+                className="p-8 rounded-3xl bg-white border border-sage-deep/10 hover:shadow-xl transition-all group"
               >
-                <div className="mb-6 p-3 bg-cream rounded-2xl inline-block shadow-sm group-hover:scale-110 transition-transform">
+                <div className="mb-6 p-3 bg-cream rounded-2xl border-sage-deep/10 inline-block shadow-sm group-hover:scale-110 transition-transform">
                   {IconMap[service.icon]}
                 </div>
                 <h3 className="text-xl font-serif text-sage-deep mb-4">{service.title}</h3>
@@ -538,6 +590,56 @@ export default function App() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Endorsements Section */}
+      <section id="endorsements" className="py-24 px-6 md:px-16 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.0, ease: "easeOut" }}
+            className="text-center mb-16 space-y-4"
+          >
+            <h2 className="text-4xl md:text-5xl font-serif text-sage-deep">{siteData.endorsements.headline}</h2>
+            <p className="text-taupe max-w-2xl mx-auto">{siteData.endorsements.subheadline}</p>
+          </motion.div>
+
+          <div className="relative group">
+            <div 
+              id="endorsement-scroll"
+              className="flex overflow-x-auto pb-12 hide-scrollbar snap-x snap-mandatory scroll-smooth -mx-6 px-6 md:mx-0 md:px-0"
+            >
+              <div className="flex space-x-6 min-w-full">
+                {siteData.endorsements.list.map((endorsement, index) => (
+                  <EndorsementCard 
+                    key={index} 
+                    endorsement={endorsement} 
+                    index={index} 
+                    onSelect={setSelectedEndorsement} 
+                  />
+                ))}
+              </div>
+            </div>
+            
+            {/* Desktop Navigation Buttons */}
+            <div className="hidden md:flex absolute top-1/2 -translate-y-1/2 -left-4 -right-4 justify-between pointer-events-none">
+              <button 
+                onClick={() => document.getElementById('endorsement-scroll')?.scrollBy({ left: -374, behavior: 'smooth' })}
+                className="pointer-events-auto bg-white shadow-lg border border-sage-deep/10 p-3 rounded-full text-sage-deep hover:bg-sage-deep hover:text-white transition-all transform -translate-x-1/2"
+              >
+                <ChevronRight size={20} className="rotate-180" />
+              </button>
+              <button 
+                onClick={() => document.getElementById('endorsement-scroll')?.scrollBy({ left: 374, behavior: 'smooth' })}
+                className="pointer-events-auto bg-white shadow-lg border border-sage-deep/10 p-3 rounded-full text-sage-deep hover:bg-sage-deep hover:text-white transition-all transform translate-x-1/2"
+              >
+                <ChevronRight size={20} />
+              </button>
             </div>
           </div>
         </div>
@@ -640,6 +742,52 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Endorsement Modal */}
+      <AnimatePresence>
+        {selectedEndorsement && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedEndorsement(null)}
+              className="absolute inset-0 bg-sage-deep/60 backdrop-blur-sm"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative bg-cream w-full max-w-2xl rounded-[40px] shadow-2xl overflow-hidden"
+            >
+              <button 
+                onClick={() => setSelectedEndorsement(null)}
+                className="absolute top-6 right-6 p-2 rounded-full bg-sage-deep/5 text-sage-deep hover:bg-sage-deep hover:text-white transition-all z-10"
+              >
+                <X size={24} />
+              </button>
+              
+              <div className="p-8 md:p-12">
+                <Quote className="text-sage-light/20 mb-8" size={60} />
+                <div className="max-h-[60vh] overflow-y-auto pr-4 custom-scrollbar">
+                  <p className="text-base md:text-lg text-taupe leading-relaxed italic">
+                    "{selectedEndorsement.blurb}"
+                  </p>
+                </div>
+                
+                <div className="mt-12 pt-8 border-t border-sage-deep/10 flex items-center justify-between">
+                  <div>
+                    <h4 className="font-serif text-2xl text-sage-deep">{selectedEndorsement.name}</h4>
+                    <p className="text-sm text-sage-light uppercase tracking-widest font-bold mt-1">
+                      {selectedEndorsement.title}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
