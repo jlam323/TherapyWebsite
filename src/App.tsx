@@ -33,17 +33,18 @@ export default function App() {
   React.useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '-50% 0px -50% 0px', // Targets the exact middle of the viewport
-      threshold: 0.6
+      rootMargin: '-40% 0px -40% 0px',
+      threshold: 0.1,
     };
 
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach(entry => {
-        // Update the active section when its boundary crosses the middle of the screen
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
+    const observerCallback = (entries) => {
+      const visible = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+      if (visible.length > 0) {
+        setActiveSection(visible[0].target.id);
+      }
     };
 
     const handleScroll = () => {
